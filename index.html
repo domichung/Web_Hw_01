@@ -19,18 +19,20 @@
       <img id="img" src="images/picture1.jpg" alt="first picture" style="display: block;" />
       <img id="img2" src="images/picture2.jpg" alt="second picture" style="display: none;" />
     </div>
-    <button id="randomButton" onclick="this.style.display = 'none'; generateRandomButton();">Click Me</button>
+    <button id="randomButton" onclick="increaseScore(); this.style.display = 'none'; generateRandomButton();">Click Me</button>
+    <span id="score">Score: 0</span>
     <script>
       var container = document.getElementById("container");
       var text = document.getElementById("text");
       var img = document.getElementById("img");
       var img2 = document.getElementById("img2");
       var randomButton;
+      var score = 0;
       var switched = false;
 
       container.onclick = function() {
         if (!switched) {
-          text.style.display = "none"; // 隐藏句子
+          text.innerHTML = "我们来玩捉迷藏吧！<br/>"; // 更新句子
           img2.style.display = "block"; // 显示第二张图片
           img.style.display = "none"; // 隐藏第一张图片
           timer = setTimeout(function() {
@@ -50,6 +52,11 @@
         var randomY = Math.random() * (window.innerHeight - button.offsetHeight);
         button.style.left = randomX + "px";
         button.style.top = randomY + "px";
+      }
+
+      function increaseScore() {
+        score++;
+        document.getElementById("score").innerHTML = "Score: " + score;
       }
     </script>
   </body>
