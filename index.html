@@ -5,6 +5,21 @@
   </head>
   <body>
     嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>
+    <button id="btn" style="margin-left: 230px;">隱藏</button>
     <img src="images/picture1.jpg" alt="My test image" />
+    <script>
+        var btn = document.getElementById("btn");
+        var img = document.getElementsByTagName("img")[0];
+        btn.onclick = function(){
+            if(btn.innerHTML === "隱藏"){
+                img.style.display = "none";
+                btn.innerHTML = "顯示";
+            }
+            else{
+                img.style.display = "block";
+                btn.innerHTML = "隱藏";
+            }
+        }
+    </script>
   </body>
 </html>
