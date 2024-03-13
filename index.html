@@ -2,24 +2,41 @@
   <head>
     <meta charset="utf-8" />
     <title>404 PAGE</title>
+    <style>
+      .container {
+        position: relative;
+        width: fit-content;
+        margin: 0 auto;
+      }
+      #btn {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fff;
+        border: 1px solid #000;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
-    嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>
-    <button id="btn" style="margin-left: 230px;">隱藏</button>
-    <img src="images/picture1.jpg" alt="My test image" />
+    <div class="container">
+      <img src="images/picture1.jpg" alt="My test image" />
+      <button id="btn">隱藏</button>
+    </div>
     <script>
-        var btn = document.getElementById("btn");
-        var img = document.getElementsByTagName("img")[0];
-        btn.onclick = function(){
-            if(btn.innerHTML === "隱藏"){
-                img.style.display = "none";
-                btn.innerHTML = "顯示";
-            }
-            else{
-                img.style.display = "block";
-                btn.innerHTML = "隱藏";
-            }
+      var btn = document.getElementById("btn");
+      var img = document.getElementsByTagName("img")[0];
+      btn.onclick = function(){
+        if(btn.innerHTML === "隱藏"){
+          img.style.display = "none";
+          btn.innerHTML = "顯示";
+        } else {
+          img.style.display = "block";
+          btn.innerHTML = "隱藏";
         }
+      }
     </script>
   </body>
 </html>
