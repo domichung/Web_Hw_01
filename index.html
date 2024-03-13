@@ -31,9 +31,8 @@
       container.onclick = function() {
         if (!switched) {
           text.style.display = "none"; // 隐藏句子
-          img2.style.display = "none"; // 隐藏第二张图片
-          img.style.display = "block"; // 显示第一张图片
-          randomButton.style.display = "block"; // 显示按钮
+          img2.style.display = "block"; // 显示第二张图片
+          img.style.display = "none"; // 隐藏第一张图片
           timer = setTimeout(function() {
             img2.style.display = "none";
             generateRandomButton();
