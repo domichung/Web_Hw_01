@@ -10,11 +10,11 @@
       background-position: center;
       margin: 0;
       padding: 0;
-      background-attachment: fixed; /* 固定背景 */
+      background-attachment: fixed; /* 定bg */
     }
     #randomButton {
       position: absolute;
-      display: none; /* 初始隐藏按钮 */
+      display: none; /*hbutt */
       border: none;
       cursor: pointer;
       background-size: cover;
@@ -27,7 +27,7 @@
       font-size: 24px;
     }
     #text {
-      font-size: 3em; /* 放大台词 */
+      font-size: 3em; /* 台词大小 */
     }
   </style>
 </head>
@@ -50,12 +50,12 @@
 
     container.onclick = function() {
       if (!switched) {
-        text.innerHTML = "來玩戳戳樂吧就不相信你能戳的贏我的速度 !!<br/>"; // 更新句子
-        img2.style.display = "block"; // 显示第二张图片
-        img.style.display = "none"; // 隐藏第一张图片
+        text.innerHTML = "來玩戳戳樂吧就不相信你能戳的贏我的速度 !!<br/>";
+        img2.style.display = "block";
+        img.style.display = "none";
         timer = setTimeout(function() {
-          text.innerHTML = "快樂戳戳小遊戲<br/>"; // 更新句子
-          img2.style.display = "none"; // 隐藏第二张图片
+          text.innerHTML = "快樂戳戳小遊戲<br/>";
+          img2.style.display = "none";
           generateRandomButton();
         }, 5000);
         switched = true;
@@ -65,26 +65,23 @@
     function generateRandomButton() {
       runningButton.style.display = "block";
 
-      // Randomize button position
       var randomX = Math.random() * (window.innerWidth - runningButton.offsetWidth);
       var randomY = Math.random() * (window.innerHeight - runningButton.offsetHeight);
       runningButton.style.left = randomX + "px";
       runningButton.style.top = randomY + "px";
 
-      // Randomize button image
       var randomImg = Math.random();
       if (randomImg < 0.5) {
         runningButton.src = "images/picture3.jpg";
-        runningButton.style.width = "100px"; // 设置按钮宽度
+        runningButton.style.width = "100px"; 
       } else {
         runningButton.src = "images/picture4.jpg";
       }
 
-      // Resize button to match image size
       var img = new Image();
       img.src = runningButton.src;
       img.onload = function() {
-        runningButton.style.height = this.height + "px"; // 设置按钮高度
+        runningButton.style.height = this.height + "px"; 
       };
     }
 
