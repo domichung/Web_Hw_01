@@ -2,6 +2,14 @@
   <head>
     <meta charset="utf-8" />
     <title>404 PAGE</title>
+    <style>
+      #randomButton {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
   </head>
   <body>
     <div id="container" style="cursor: pointer;">
@@ -11,17 +19,43 @@
     </div>
     <script>
       var container = document.getElementById("container");
+      var img = document.getElementById("img");
+      var img2 = document.getElementById("img2");
+      var randomButton;
+
       container.onclick = function() {
-        var img = document.getElementById("img");
-        var img2 = document.getElementById("img2");
         if (img.style.display === "none") {
           img.style.display = "block";
+          img2.style.display = "none";
           container.innerHTML = "嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>";
+          clearTimeout(timer);
         } else {
           img.style.display = "none";
           img2.style.display = "block";
           container.innerHTML = "先來玩戳戳樂吧就不相信你能戳的贏我的速度 !!<br/>";
+          timer = setTimeout(function() {
+            img2.style.display = "none";
+            generateRandomButton();
+          }, 5000);
         }
+      }
+
+      function generateRandomButton() {
+        var button = document.createElement("button");
+        button.id = "randomButton";
+        button.textContent = "Click Me";
+        button.onclick = function() {
+          this.style.display = "none";
+          generateRandomButton();
+        }
+        document.body.appendChild(button);
+        randomButton = button;
+
+        // Randomize button position
+        var randomX = Math.random() * (window.innerWidth - button.offsetWidth);
+        var randomY = Math.random() * (window.innerHeight - button.offsetHeight);
+        button.style.left = randomX + "px";
+        button.style.top = randomY + "px";
       }
     </script>
   </body>
