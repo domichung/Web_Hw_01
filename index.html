@@ -2,71 +2,24 @@
   <head>
     <meta charset="utf-8" />
     <title>404 PAGE</title>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
-      canvas {
-        display: block;
-      }
-    </style>
   </head>
   <body>
-    <canvas id="canvas"></canvas>
+    <div id="container" style="cursor: pointer;">
+      嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>
+      <img id="img" src="images/picture1.jpg" alt="My test image" style="display: block;" />
+    </div>
     <script>
-      var canvas = document.getElementById('canvas');
-      var ctx = canvas.getContext('2d');
-      var target = { x: 0, y: 0, radius: 20 };
-      var player = { x: canvas.width / 2, y: canvas.height / 2, radius: 10, speed: 5 };
-
-      function resetTarget() {
-        target.x = Math.random() * canvas.width;
-        target.y = Math.random() * canvas.height;
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-        ctx.arc(target.x, target.y, target.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'red';
-        ctx.fill();
-        ctx.closePath();
-
-        ctx.beginPath();
-        ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'blue';
-        ctx.fill();
-        ctx.closePath();
-      }
-
-      function update() {
-        var dx = target.x - player.x;
-        var dy = target.y - player.y;
-        var distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < player.radius + target.radius) {
-          location.reload(); // Reload the page when player touches the target
+      var container = document.getElementById("container");
+      container.onclick = function() {
+        var img = document.getElementById("img");
+        if (img.style.display === "none") {
+          img.style.display = "block";
+          container.innerHTML = "嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>";
+        } else {
+          img.style.display = "none";
+          container.innerHTML = "";
         }
-
-        var angle = Math.atan2(dy, dx);
-        player.x += Math.cos(angle) * player.speed;
-        player.y += Math.sin(angle) * player.speed;
       }
-
-      function loop() {
-        draw();
-        update();
-        requestAnimationFrame(loop);
-      }
-
-      canvas.addEventListener('mousemove', function(event) {
-        player.x = event.clientX - canvas.getBoundingClientRect().left;
-        player.y = event.clientY - canvas.getBoundingClientRect().top;
-      });
-
-      resetTarget(); // Set initial target position
-      loop(); // Start the game loop
     </script>
   </body>
 </html>
