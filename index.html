@@ -4,15 +4,20 @@
     <title>404 PAGE</title>
   </head>
   <body>
-    嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>
-    <img id="img" src="images/picture1.jpg" alt="My test image" onclick="toggleImage()" style="cursor: pointer;" />
+    <div id="container" style="cursor: pointer;">
+      嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>
+      <img id="img" src="images/picture1.jpg" alt="My test image" style="display: block;" />
+    </div>
     <script>
-      function toggleImage(){
+      var container = document.getElementById("container");
+      container.onclick = function() {
         var img = document.getElementById("img");
-        if(img.style.display === "none"){
+        if (img.style.display === "none") {
           img.style.display = "block";
+          container.innerHTML = "嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>";
         } else {
           img.style.display = "none";
+          container.innerHTML = "";
         }
       }
     </script>
