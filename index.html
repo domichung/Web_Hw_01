@@ -3,6 +3,13 @@
     <meta charset="utf-8" />
     <title>404 PAGE</title>
     <style>
+      body {
+        background-image: url('images/bg.jpg');
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+      }
       #randomButton {
         position: absolute;
         top: 50%;
@@ -32,7 +39,7 @@
 
       container.onclick = function() {
         if (!switched) {
-          text.innerHTML = "我们来玩捉迷藏吧！<br/>"; // 更新句子
+          text.innerHTML = "快樂戳戳小遊戲<br/>"; // 更新句子
           img2.style.display = "block"; // 显示第二张图片
           img.style.display = "none"; // 隐藏第一张图片
           timer = setTimeout(function() {
