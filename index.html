@@ -75,6 +75,7 @@
       var randomImg = Math.random();
       if (randomImg < 0.5) {
         runningButton.src = "images/picture3.jpg";
+        runningButton.style.width = "100px"; // 设置按钮宽度
       } else {
         runningButton.src = "images/picture4.jpg";
       }
@@ -83,8 +84,7 @@
       var img = new Image();
       img.src = runningButton.src;
       img.onload = function() {
-        runningButton.style.width = this.width + "px";
-        runningButton.style.height = this.height + "px";
+        runningButton.style.height = this.height + "px"; // 设置按钮高度
       };
     }
 
