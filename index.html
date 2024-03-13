@@ -6,7 +6,8 @@
   <body>
     <div id="container" style="cursor: pointer;">
       嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>
-      <img id="img" src="images/picture1.jpg" alt="My test image" style="display: block;" />
+      <img id="img" src="images/picture1.jpg" alt="first picture" style="display: block;" />
+      <img id="img2" src="images/picture2.jpg" alt="second picture" style="display: none;" />
     </div>
     <script>
       var container = document.getElementById("container");
@@ -17,7 +18,8 @@
           container.innerHTML = "嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>";
         } else {
           img.style.display = "none";
-          container.innerHTML = "";
+          img2.style.display = "block";
+          container.innerHTML = "先來玩戳戳樂吧就不相信你能戳的贏我的速度 !!<br/>";
         }
       }
     </script>
