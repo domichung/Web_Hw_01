@@ -8,18 +8,21 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 4em; /* 放大按钮 */
+        font-size: 2em; /* 放大按钮 */
+        display: none; /* 初始隐藏按钮 */
       }
     </style>
   </head>
   <body>
     <div id="container" style="cursor: pointer;">
-      嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>
+      <span id="text">嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/></span>
       <img id="img" src="images/picture1.jpg" alt="first picture" style="display: block;" />
       <img id="img2" src="images/picture2.jpg" alt="second picture" style="display: none;" />
     </div>
+    <button id="randomButton" onclick="this.style.display = 'none'; generateRandomButton();">Click Me</button>
     <script>
       var container = document.getElementById("container");
+      var text = document.getElementById("text");
       var img = document.getElementById("img");
       var img2 = document.getElementById("img2");
       var randomButton;
@@ -27,9 +30,10 @@
 
       container.onclick = function() {
         if (!switched) {
-          img.style.display = "none";
-          img2.style.display = "block";
-          container.innerHTML = "先來玩戳戳樂吧就不相信你能戳的贏我的速度 !!<br/>";
+          text.style.display = "none"; // 隐藏句子
+          img2.style.display = "none"; // 隐藏第二张图片
+          img.style.display = "block"; // 显示第一张图片
+          randomButton.style.display = "block"; // 显示按钮
           timer = setTimeout(function() {
             img2.style.display = "none";
             generateRandomButton();
@@ -39,15 +43,8 @@
       }
 
       function generateRandomButton() {
-        var button = document.createElement("button");
-        button.id = "randomButton";
-        button.textContent = "Click Me";
-        button.onclick = function() {
-          this.style.display = "none";
-          generateRandomButton();
-        }
-        document.body.appendChild(button);
-        randomButton = button;
+        var button = document.getElementById("randomButton");
+        button.style.display = "block";
 
         // Randomize button position
         var randomX = Math.random() * (window.innerWidth - button.offsetWidth);
