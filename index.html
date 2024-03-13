@@ -25,25 +25,29 @@
       <span id="text">嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/></span>
       <img id="img" src="images/picture1.jpg" alt="first picture" style="display: block;" />
       <img id="img2" src="images/picture2.jpg" alt="second picture" style="display: none;" />
+      <img id="img3" src="images/picture3.jpg" alt="third picture" style="display: none;" />
     </div>
-    <button id="randomButton" onclick="increaseScore(); this.style.display = 'none'; generateRandomButton();">Click Me</button>
+    <button id="randomButton" onclick="increaseScore(); this.style.display = 'none'; generateRandomButton();">戳我</button>
     <span id="score">Score: 0</span>
     <script>
       var container = document.getElementById("container");
       var text = document.getElementById("text");
       var img = document.getElementById("img");
       var img2 = document.getElementById("img2");
+      var img3 = document.getElementById("img3");
       var randomButton;
       var score = 0;
       var switched = false;
 
       container.onclick = function() {
         if (!switched) {
-          text.innerHTML = "快樂戳戳小遊戲<br/>"; // 更新句子
+          text.innerHTML = "來玩戳戳樂吧就不相信你能戳的贏我的速度 !!<br/>"; // 更新句子
           img2.style.display = "block"; // 显示第二张图片
           img.style.display = "none"; // 隐藏第一张图片
           timer = setTimeout(function() {
-            img2.style.display = "none";
+            text.innerHTML = "快樂戳戳小遊戲<br/>"; // 更新句子
+            img2.style.display = "none"; // 隐藏第二张图片
+            img3.style.display = "block"; // 显示第三张图片
             generateRandomButton();
           }, 5000);
           switched = true;
