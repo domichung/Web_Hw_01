@@ -1,92 +1,90 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>404 PAGE</title>
-    <style>
-      body {
-        background-image: url('images/bg.jpg');
-        background-size: cover;
-        background-position: center;
-        margin: 0;
-        padding: 0;
-      }
-      #randomButton {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2em; /* 放大按钮 */
-        display: none; /* 初始隐藏按钮 */
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="container" style="cursor: pointer;">
-      <span id="text">嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/></span>
-      <img id="img" src="images/picture1.jpg" alt="first picture" style="display: block;" />
-      <img id="img2" src="images/picture2.jpg" alt="second picture" style="display: none;" />
-      <img id="img3" src="images/picture3.jpg" alt="third picture" style="display: none;" />
-      <img id="img4" src="images/picture4.jpg" alt="fourth picture" style="display: none;" />
-    </div>
-    <button id="randomButton" onclick="increaseScore(); this.style.display = 'none'; generateRandomButton();"></button>
-    <span id="score">Score: 0</span>
-    <script>
-      var container = document.getElementById("container");
-      var text = document.getElementById("text");
-      var img = document.getElementById("img");
-      var img2 = document.getElementById("img2");
-      var img3 = document.getElementById("img3");
-      var img4 = document.getElementById("img4");
-      var randomButton;
-      var score = 0;
-      var switched = false;
+<head>
+  <meta charset="UTF-8">
+  <title>404 PAGE</title>
+  <style>
+    body {
+      background-image: url('images/bg.jpg');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+    }
+    #randomButton {
+      position: absolute;
+      display: none; /* 初始隐藏按钮 */
+      border: none;
+      cursor: pointer;
+      background-size: cover;
+    }
+    #score {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container" style="cursor: pointer;">
+    <span id="text">嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/></span>
+    <img id="img" src="images/picture1.jpg" alt="first picture" style="display: block;" />
+    <img id="img2" src="images/picture2.jpg" alt="second picture" style="display: none;" />
+  </div>
+  <img id="runningButton" src="images/picture3.jpg" alt="running button" style="position: absolute; display: none; cursor: pointer;" />
+  <span id="score">Score: 0</span>
+  <script>
+    var container = document.getElementById("container");
+    var text = document.getElementById("text");
+    var img = document.getElementById("img");
+    var img2 = document.getElementById("img2");
+    var runningButton = document.getElementById("runningButton");
+    var score = 0;
+    var switched = false;
 
-      container.onclick = function() {
-        if (!switched) {
-          text.innerHTML = "來玩戳戳樂吧就不相信你能戳的贏我的速度 !!<br/>"; // 更新句子
-          img2.style.display = "block"; // 显示第二张图片
-          img.style.display = "none"; // 隐藏第一张图片
-          timer = setTimeout(function() {
-            text.innerHTML = "快樂戳戳小遊戲<br/>"; // 更新句子
-            img2.style.display = "none"; // 隐藏第二张图片
-            var randomNum = Math.random();
-            if (randomNum < 0.5) {
-              img3.style.display = "block"; // 显示第三张图片
-            } else {
-              img4.style.display = "block"; // 显示第四张图片
-            }
-            generateRandomButton();
-          }, 5000);
-          switched = true;
-        }
+    container.onclick = function() {
+      if (!switched) {
+        text.innerHTML = "來玩戳戳樂吧就不相信你能戳的贏我的速度 !!<br/>"; // 更新句子
+        img2.style.display = "block"; // 显示第二张图片
+        img.style.display = "none"; // 隐藏第一张图片
+        timer = setTimeout(function() {
+          text.innerHTML = "快樂戳戳小遊戲<br/>"; // 更新句子
+          img2.style.display = "none"; // 隐藏第二张图片
+          generateRandomButton();
+        }, 5000);
+        switched = true;
       }
+    }
 
-      function generateRandomButton() {
-        var button = document.getElementById("randomButton");
-        button.style.display = "block";
+    function generateRandomButton() {
+      runningButton.style.display = "block";
 
-        // Randomize button position
-        var randomX = Math.random() * (window.innerWidth - button.offsetWidth);
-        var randomY = Math.random() * (window.innerHeight - button.offsetHeight);
-        button.style.left = randomX + "px";
-        button.style.top = randomY + "px";
+      // Randomize button position
+      var randomX = Math.random() * (window.innerWidth - runningButton.offsetWidth);
+      var randomY = Math.random() * (window.innerHeight - runningButton.offsetHeight);
+      runningButton.style.left = randomX + "px";
+      runningButton.style.top = randomY + "px";
 
-        // Randomize button background image
-        var randomNum = Math.random();
-        if (randomNum < 0.5) {
-          button.style.backgroundImage = "url('images/picture3.jpg')";
-        } else {
-          button.style.backgroundImage = "url('images/picture4.jpg')";
-        }
+      // Randomize button image
+      var randomImg = Math.random();
+      if (randomImg < 0.5) {
+        runningButton.src = "images/picture3.jpg";
+      } else {
+        runningButton.src = "images/picture4.jpg";
       }
+    }
 
-      function increaseScore() {
-        score++;
-        document.getElementById("score").innerHTML = "Score: " + score;
-      }
-    </script>
-  </body>
+    runningButton.onclick = function() {
+      increaseScore();
+      generateRandomButton();
+    }
+
+    function increaseScore() {
+      score++;
+      document.getElementById("score").innerHTML = "Score: " + score;
+    }
+  </script>
+</body>
 </html>
