@@ -10,6 +10,7 @@
       background-position: center;
       margin: 0;
       padding: 0;
+      background-attachment: fixed; /* 固定背景 */
     }
     #randomButton {
       position: absolute;
@@ -24,6 +25,9 @@
       right: 20px;
       color: white;
       font-size: 24px;
+    }
+    #text {
+      font-size: 5em; /* 放大台词 */
     }
   </style>
 </head>
@@ -74,6 +78,14 @@
       } else {
         runningButton.src = "images/picture4.jpg";
       }
+
+      // Resize button to match image size
+      var img = new Image();
+      img.src = runningButton.src;
+      img.onload = function() {
+        runningButton.style.width = this.width + "px";
+        runningButton.style.height = this.height + "px";
+      };
     }
 
     runningButton.onclick = function() {
