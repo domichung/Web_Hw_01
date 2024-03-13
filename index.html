@@ -22,14 +22,10 @@
       var img = document.getElementById("img");
       var img2 = document.getElementById("img2");
       var randomButton;
+      var switched = false;
 
       container.onclick = function() {
-        if (img.style.display === "none") {
-          img.style.display = "block";
-          img2.style.display = "none";
-          container.innerHTML = "嘿嘿 我知道你連不進網頁就由我來做你的對手吧 !!<br/>";
-          clearTimeout(timer);
-        } else {
+        if (!switched) {
           img.style.display = "none";
           img2.style.display = "block";
           container.innerHTML = "先來玩戳戳樂吧就不相信你能戳的贏我的速度 !!<br/>";
@@ -37,6 +33,7 @@
             img2.style.display = "none";
             generateRandomButton();
           }, 5000);
+          switched = true;
         }
       }
 
