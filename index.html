@@ -17,6 +17,9 @@
         transform: translate(-50%, -50%);
         font-size: 2em; /* 放大按钮 */
         display: none; /* 初始隐藏按钮 */
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -26,8 +29,9 @@
       <img id="img" src="images/picture1.jpg" alt="first picture" style="display: block;" />
       <img id="img2" src="images/picture2.jpg" alt="second picture" style="display: none;" />
       <img id="img3" src="images/picture3.jpg" alt="third picture" style="display: none;" />
+      <img id="img4" src="images/picture4.jpg" alt="fourth picture" style="display: none;" />
     </div>
-    <button id="randomButton" onclick="increaseScore(); this.style.display = 'none'; generateRandomButton();">戳我</button>
+    <button id="randomButton" onclick="increaseScore(); this.style.display = 'none'; generateRandomButton();"></button>
     <span id="score">Score: 0</span>
     <script>
       var container = document.getElementById("container");
@@ -35,6 +39,7 @@
       var img = document.getElementById("img");
       var img2 = document.getElementById("img2");
       var img3 = document.getElementById("img3");
+      var img4 = document.getElementById("img4");
       var randomButton;
       var score = 0;
       var switched = false;
@@ -47,7 +52,12 @@
           timer = setTimeout(function() {
             text.innerHTML = "快樂戳戳小遊戲<br/>"; // 更新句子
             img2.style.display = "none"; // 隐藏第二张图片
-            img3.style.display = "block"; // 显示第三张图片
+            var randomNum = Math.random();
+            if (randomNum < 0.5) {
+              img3.style.display = "block"; // 显示第三张图片
+            } else {
+              img4.style.display = "block"; // 显示第四张图片
+            }
             generateRandomButton();
           }, 5000);
           switched = true;
@@ -63,6 +73,14 @@
         var randomY = Math.random() * (window.innerHeight - button.offsetHeight);
         button.style.left = randomX + "px";
         button.style.top = randomY + "px";
+
+        // Randomize button background image
+        var randomNum = Math.random();
+        if (randomNum < 0.5) {
+          button.style.backgroundImage = "url('images/picture3.jpg')";
+        } else {
+          button.style.backgroundImage = "url('images/picture4.jpg')";
+        }
       }
 
       function increaseScore() {
