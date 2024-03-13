@@ -1,82 +1,9 @@
-<!DOCTYPE html>
-
-    <head>
-
-        <title>404 PAGE</title>
-        <meta name="author" content="Domichung">
-
-        <meta charset="UTF-8">
-
-        <style>
-            html { height:100%; overflow:hidden; }
-            body {
-                height:100%;
-                margin:0;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                background-color: #bdaa90;
-                user-select: none;
-                -moz-user-select: none;
-                -webkit-user-select: none;    
-                position:relative;     
-                overflow:hidden;
-            }
-            body::before{
-                content:"";
-                position:absolute;
-                width:120%;height:120%;
-                top:50%;left:50%;
-                z-index:-1;
-                transform:translate(-50%,-50%) rotate(-3deg);
-                background-image: url("imgs/bg.jpg");
-                background-repeat: repeat-x;
-                background-size: contain;
-            }
-
-            .title {
-                margin:2em 0 0 0;
-                width: min(600px,80%);
-            }
-
-            .cat-img {
-                height:0;
-                flex-grow:1;
-                width:100%;
-                max-width: 800px;
-                background-position: bottom;
-                background-size: contain;
-                background-repeat: no-repeat;
-                touch-action: manipulation;
-                text-align: center;
-                color:white;
-                -webkit-text-stroke-width: 3px;
-                -webkit-text-stroke-color: black;
-                font-weight:900;
-                font-size:80px;
-                font-family: 'Nunito', sans-serif;
-                word-wrap: break-word;
-            }
-            @media(min-width:1000px) {
-                .title {
-                    width: min(400px,80%);                    
-                }
-                .cat-img {
-                    font-size: 40px;
-                    -webkit-text-stroke-width: 1.5px;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <img class="title" alt="CARDGAME" width="200" height="150">
-
-        <div class="cat-img" id="p"></div>
-
-        <script>
-            
-        </script>        
-</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My test page</title>
+  </head>
+  <body>
+    <img src="images/firefox-icon.png" alt="My test image" />
+  </body>
 </html>
